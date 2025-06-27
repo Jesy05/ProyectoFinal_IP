@@ -8,21 +8,20 @@ def limpiarPantalla():
     os.system("cls" if os.name == "nt" else "clear")
 
 def mostrarMenu():
-    print("📖" * 30)
+    print("📖" * 23)
     print("📚 UAM-CodeX — Plataforma Académica de Consola")
-    print("📖" * 30)
+    print("📖" * 23)
     print("1️⃣  Ingresar como Publicador")
-    print("2️⃣  Ingresar como Revisor")
+    print("2️⃣  Ingresar como Gestor")
     print("3️⃣  Ingresar como Lector")
-    print("4️⃣  Ver estadísticas generales")
-    print("5️⃣  Salir")
-    print("🌀" * 30)
+    print("4️⃣  Salir") 
+    print("🌀" * 23)
 
 def main():
     while True:
-        limpiarPantalla()
+        limpiarPantalla() 
         mostrarMenu()
-        opcion = input("👉 Selecciona una opción (1-5): ")
+        opcion = input("👉 Selecciona una opción (1-4): ")
 
         if opcion == "1":
             # --- Aquí se llamará a la función del módulo publicador ---
@@ -34,8 +33,14 @@ def main():
         elif opcion == "2":
             # --- Aquí se llamará a la función del módulo revisor ---
             # Ejemplo futuro: revisor.menuRevisor()
-            print("\n✅ Entrando como Revisor...")
-            print("🔧 [placeholder] Esta función será implementada por el módulo revisor.py")
+            print("\n✅ Entrando como Gestor...")
+            print("🔧 [placeholder] Esta función será implementada por el módulo gestor.py")
+
+            # --- Aquí se llamará tambien a la función que muestra estadísticas del sistema que se quedan disponibles solo para el revisor ---
+            # Ejemplo futuro: gestor.mostrarEstadisticas()
+            print("\n📊 Estadísticas del sistema...")
+            print("[Aca podría ver un resumen de las estadísticas del sistema, como número de publicaciones, revisiones pendientes, etc.]")
+            print("🔧 [placeholder] Esta función será implementada por el módulo gestor.py")
             input("\n⏎ Presiona Enter para volver al menú...")
 
         elif opcion == "3":
@@ -46,13 +51,6 @@ def main():
             input("\n⏎ Presiona Enter para volver al menú...")
 
         elif opcion == "4":
-            # --- Aquí se llamará a la función que muestra estadísticas del sistema ---
-            # Ejemplo futuro: gestor.mostrarEstadisticas()
-            print("\n📊 Estadísticas del sistema...")
-            print("🔧 [placeholder] Esta función será implementada por el módulo gestor.py")
-            input("\n⏎ Presiona Enter para volver al menú...")
-
-        elif opcion == "5":
             print("\n👋 ¡Gracias por usar UAM-CodeX! Hasta pronto.")
             break
 
