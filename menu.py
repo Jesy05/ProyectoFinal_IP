@@ -14,7 +14,6 @@ def mostrarMenu():
     print("1️⃣  Ingresar como Publicador")
     print("2️⃣  Ingresar como Gestor")
     print("3️⃣  Ingresar como Lector")
-    print("4️⃣  Salir") 
     print("🌀" * 23)
 
 def main():
@@ -49,9 +48,6 @@ def main():
             print("\n📖 Entrando como Lector...")
             print("🔧 [placeholder] Esta función será implementada por el módulo lector.py")
             input("\n⏎ Presiona Enter para volver al menú...")
-
-        elif opcion == "4":
-            print("\n👋 ¡Gracias por usar UAM-CodeX! Hasta pronto.")
             break
 
         else:
