@@ -80,7 +80,7 @@ opcion = st.sidebar.radio(
      "✍️ Publicador",
      "✅ Gestor",
      "📖 Lector",
-     "🚪 Salir")
+     "❓ Ayuda")
 )
 
 # ──────── VISTAS ─────────────────────────────────────────
@@ -104,6 +104,10 @@ elif opcion == "📖 Lector":
     # menu_lector()
     st.info("🔧 Placeholder → aquí se llamará a `menu_lector()` del módulo *lector.py*")
 
-elif opcion == "🚪 Salir":
-    st.warning("👋 ¡Gracias por usar UAM-CodeX!")
-    st.stop()   # finaliza la app para esa sesión
+elif opcion == "❓ Ayuda":
+    st.header("❓ Ayuda y Soporte")
+    st.write("Para más información, contacta a los desarrolladores:")
+    st.write("- Marian Alejandra Guillén Castillo")
+    st.write("- Nora Maria Obregón Membreño")
+    st.write("- Jesy Nicole González Jarquín")
+    st.write("📧 Email: UAM-CodeX@uamv.edu.ni")
