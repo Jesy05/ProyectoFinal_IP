@@ -1,113 +1,88 @@
+# main.py – GUI con expander de login y placeholders
 # Autor: Jesy Nicole González Jarquín
-# Versión: 1.0
-# Descripción: Menú principal del sistema UAM-CodeX - con estructura modular
-
-import os
-
-def limpiarPantalla():
-    os.system("cls" if os.name == "nt" else "clear")
-
-def mostrarMenu():
-    print("📖" * 23)
-    print("📚 UAM-CodeX — Plataforma Académica de Consola")
-    print("📖" * 23)
-    print("1️⃣  Ingresar como Publicador")
-    print("2️⃣  Ingresar como Gestor")
-    print("3️⃣  Ingresar como Lector")
-    print("🌀" * 23)
-
-def main():
-    while True:
-        limpiarPantalla() 
-        mostrarMenu()
-        opcion = input("👉 Selecciona una opción (1-4): ")
-
-        if opcion == "1":
-            # --- Aquí se llamará a la función del módulo publicador ---
-            # Ejemplo futuro: publicador.menuPublicador()
-            print("\n✍️ Entrando como Publicador...")
-            print("🔧 [placeholder] Esta función será implementada por el módulo publicador.py")
-            input("\n⏎ Presiona Enter para volver al menú...")
-
-        elif opcion == "2":
-            # --- Aquí se llamará a la función del módulo revisor ---
-            # Ejemplo futuro: revisor.menuRevisor()
-            print("\n✅ Entrando como Gestor...")
-            print("🔧 [placeholder] Esta función será implementada por el módulo gestor.py")
-
-            # --- Aquí se llamará tambien a la función que muestra estadísticas del sistema que se quedan disponibles solo para el revisor ---
-            # Ejemplo futuro: gestor.mostrarEstadisticas()
-            print("\n📊 Estadísticas del sistema...")
-            print("[Aca podría ver un resumen de las estadísticas del sistema, como número de publicaciones, revisiones pendientes, etc.]")
-            print("🔧 [placeholder] Esta función será implementada por el módulo gestor.py")
-            input("\n⏎ Presiona Enter para volver al menú...")
-
-        elif opcion == "3":
-            # --- Aquí se llamará a la función del módulo lector ---
-            # Ejemplo futuro: lector.menuLector()
-            print("\n📖 Entrando como Lector...")
-            print("🔧 [placeholder] Esta función será implementada por el módulo lector.py")
-            input("\n⏎ Presiona Enter para volver al menú...")
-            break
-
-        else:
-            print("\n⚠️ Opción no válida. Intenta de nuevo.")
-            input("\n⏎ Presiona Enter para continuar...")
-
-if __name__ == "__main__":
-    main()
-
-# main.py – GUI inicial con Streamlit
-# Autor: Jesy Nicole González Jarquín
-# Versión: 1.0 GUI
-# Descripción: Menú principal gráfico de UAM-CodeX
+# Versión: 1.1 GUI
 
 import streamlit as st
 
-# ──────── IMPORTACIONES FUTURAS ──────────────────────────
+# ─── Importaciones futuras ─────────────────────────────
 # from modulos.publicador import menu_publicador
-# from modulos.gestor     import menu_gestor          # incluye estadísticas
+# from modulos.gestor     import menu_gestor
 # from modulos.lector     import menu_lector
-# ─────────────────────────────────────────────────────────
+# ───────────────────────────────────────────────────────
 
-st.set_page_config(page_title="UAM-CodeX", page_icon="📚")
+st.set_page_config(page_title="UAM‑CodeX", page_icon="📚")
 
-st.title("📚 UAM-CodeX — Plataforma Académica")
+# ─── Sidebar ───────────────────────────────────────────
+side = st.sidebar.radio("Menú", ("ℹ️ Acerca", "❓ Ayuda"))
 
-opcion = st.sidebar.radio(
-    "Selecciona tu rol",
-    ("🏠 Inicio",
-     "✍️ Publicador",
-     "✅ Gestor",
-     "📖 Lector",
-     "❓ Ayuda")
+if side == "ℹ️ Acerca":
+    st.sidebar.markdown(
+        "**UAM‑CodeX** es una plataforma académica colaborativa "
+        "desarrollada por estudiantes de Ingeniería en Sistemas para "
+        "compartir artículos, tutoriales y proyectos."
+    )
+elif side == "❓ Ayuda":
+    st.sidebar.markdown(
+        "Para soporte, contacta:\n\n"
+        "- Marian Alejandra Guillén Castillo\n"
+        "- Nora María Obregón Membreño\n"
+        "- Jesy Nicole González Jarquín\n\n"
+        "📧  **UAM‑CodeX@uamv.edu.ni**"
+    )
+
+# ─── Landing page ──────────────────────────────────────
+st.title("📚 UAM‑CodeX")
+st.markdown(
+    "Bienvenido a la plataforma donde estudiantes comparten conocimiento "
+    "y aprenden de las experiencias de sus compañeros."
 )
 
-# ──────── VISTAS ─────────────────────────────────────────
-if opcion == "🏠 Inicio":
-    st.success("Bienvenida/o. Elige un rol en la barra lateral ➡️")
+# Guardamos el rol en session_state
+if "rol" not in st.session_state:
+    st.session_state["rol"] = ""
 
-elif opcion == "✍️ Publicador":
-    st.header("✍️ Módulo Publicador")
-    # menu_publicador()
-    st.info("🔧 Placeholder → aquí se llamará a `menu_publicador()` del módulo *publicador.py*")
+with st.expander("🔑 Iniciar sesión (elige tu rol)"):
+    rol = st.selectbox(
+        "Rol:",
+        ("", "✍️ Publicador", "✅ Gestor", "📖 Lector"),
+        index=0,
+        key="rol_select"
+    )
+    if rol:
+        st.session_state["rol"] = rol
 
-elif opcion == "✅ Gestor":
-    st.header("✅ Módulo Gestor")
-    # menu_gestor()
-    st.info("🔧 Placeholder → aquí se llamará a `menu_gestor()` del módulo *gestor.py*")
-    st.subheader("📊 Estadísticas del sistema")
-    st.write("[Aquí se mostrará el resumen: artículos, revisiones, etc.]")
+# ─── Mostrar contenido solo cuando haya rol ────────────
+rol_actual = st.session_state["rol"]
 
-elif opcion == "📖 Lector":
-    st.header("📖 Módulo Lector")
-    # menu_lector()
-    st.info("🔧 Placeholder → aquí se llamará a `menu_lector()` del módulo *lector.py*")
+if rol_actual:
+    st.success(f"Has iniciado sesión como **{rol_actual.split()[1]}**")
 
-elif opcion == "❓ Ayuda":
-    st.header("❓ Ayuda y Soporte")
-    st.write("Para más información, contacta a los desarrolladores:")
-    st.write("- Marian Alejandra Guillén Castillo")
-    st.write("- Nora Maria Obregón Membreño")
-    st.write("- Jesy Nicole González Jarquín")
-    st.write("📧 Email: UAM-CodeX@uamv.edu.ni")
+    if rol_actual == "✍️ Publicador":
+        st.header("Panel de Publicador")
+        # menu_publicador()
+        st.info("🔧 Placeholder → aquí irá `menu_publicador()`")
+
+    elif rol_actual == "✅ Gestor":
+        st.header("Panel de Gestor")
+        # menu_gestor()
+        st.info("🔧 Placeholder → aquí irá `menu_gestor()`")
+        st.subheader("📊 Estadísticas (placeholder)")
+        st.write("Total artículos: 0 · Pendientes: 0 · Aprobados: 0")
+
+    elif rol_actual == "📖 Lector":
+        st.header("Panel de Lector")
+        # menu_lector()
+        st.info("🔧 Placeholder → aquí irá `menu_lector()`")
+
+    # ── Tarjetas de 3 artículos de muestra ─────────────
+    st.subheader("Artículos destacados")
+    col1, col2, col3 = st.columns(3)
+    for col, n in zip((col1, col2, col3), (1, 2, 3)):
+        with col:
+            st.markdown(
+                f"### 📄 Artículo #{n}\n"
+                "_Resumen de prueba..._\n"
+                "🔧 **En construcción**"
+            )
+else:
+    st.warning("Selecciona un rol en el expander para continuar.")
