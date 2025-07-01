@@ -3,6 +3,8 @@
 # Versión: 1.1 GUI
 
 import streamlit as st
+from modulos.classArticulo import Articulo
+
 
 # ─── Importaciones futuras ─────────────────────────────
 # from modulos.publicador import menu_publicador
@@ -24,9 +26,6 @@ if side == "ℹ️ Acerca":
 elif side == "❓ Ayuda":
     st.sidebar.markdown(
         "Para soporte, contacta:\n\n"
-        "- Marian Alejandra Guillén Castillo\n"
-        "- Nora María Obregón Membreño\n"
-        "- Jesy Nicole González Jarquín\n\n"
         "📧  **UAM‑CodeX@uamv.edu.ni**"
     )
 
@@ -49,15 +48,15 @@ with st.expander("🔑 Iniciar sesión (elige tu rol)"):
         key="rol_select"
     )
     if rol:
-        st.session_state["rol"] = rol
+        st.session_state["rol"] = rol # Guardamos el rol seleccionado
 
 # ─── Mostrar contenido solo cuando haya rol ────────────
 rol_actual = st.session_state["rol"]
 
-if rol_actual:
+if rol_actual: # Verificamos si hay un rol seleccionado
     st.success(f"Has iniciado sesión como **{rol_actual.split()[1]}**")
 
-    if rol_actual == "✍️ Publicador":
+    if rol_actual == "✍️ Publicador": 
         st.header("Panel de Publicador")
         # menu_publicador()
         st.info("🔧 Placeholder → aquí irá `menu_publicador()`")
