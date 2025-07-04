@@ -9,7 +9,7 @@ def menu_gestor():
     st.subheader("📤 Artículos en revisión")
     for i, art in enumerate(articulos_borrador):
         with st.expander(f"{i+1}. {art.titulo}"):
-            st.write(f"Autor: {art.autor}")
+            st.write(f"Autor: {art.autor}") #Esta funcion imprime en stream lit
             st.write(art.contenido)
             col1, col2 = st.columns(2)
             if col1.button("✅ Aprobar", key=f"aprobar{i}"):
