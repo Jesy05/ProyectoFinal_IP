@@ -1,6 +1,6 @@
 # classUsuario.py
 
-import re
+import re # es una librería para trabajar con expresiones regulares como validaciones de cadenas
 
 class Usuario:
     def __init__(self, nombre: str, contra: str):
@@ -11,8 +11,8 @@ class Usuario:
         return (
             isinstance(self.nombre, str) and
             len(self.nombre) <= 50 and
-            re.fullmatch(r"[A-Za-z0-9_ ]*", self.nombre) is not None
-        )
+            re.fullmatch(r"[A-Za-z0-9_ ]*", self.nombre) is not None # Acepta letras, números, guiones bajos y espacios
+        ) # re.fullmatch asegura que toda la cadena cumpla con el patrón
 
     def validar_contrasena(self):
         return (

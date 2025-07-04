@@ -2,11 +2,11 @@
 # Versión: 1.1 GUI
 
 import streamlit as st
-from clases.classArticulo import Articulo
 from modulos.modArticulo import menu_publicador
 from modulos.modGestor import menu_gestor
 from modulos.modLector import menu_lector 
 
+from clases.classArticulo import Articulo
 from clases.classUsuario import Usuario
 from clases.classRol import Rol
 from clases.classGestor import GestorPermiso
@@ -39,7 +39,7 @@ st.markdown(
 if "rol" not in st.session_state:
     st.session_state["rol"] = ""
 
-# aca las validaciones de usuario, contraseña y rol
+# aca las validaciones de usuario, contraseña y rol <<<< 
 with st.expander("🔑 Iniciar sesión (elige tu rol)"):
     st.write("Por favor ingresa tus credenciales")
 
