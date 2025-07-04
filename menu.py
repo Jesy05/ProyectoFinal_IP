@@ -2,6 +2,7 @@
 # Versión: 1.1 GUI
 
 import streamlit as st
+import os
 from modulos.modPublicador import menu_publicador
 from modulos.modGestor import menu_gestor
 from modulos.modLector import menu_lector 
@@ -14,7 +15,11 @@ from clases.classGestor import GestorPermiso
 st.set_page_config(page_title="UAM‑CodeX", page_icon="📚")
 
 # Mostrar banner principal
-st.image("static/banner_inicio.png", use_column_width=True)
+ruta_banner = os.path.join("static", "banner_inicio.png")
+if os.path.exists(ruta_banner):
+    st.image(ruta_banner, use_column_width=True)
+else:
+    st.warning("No se encontró el archivo del banner.")
 
 # ─── Sidebar ───────────────────────────────────────────
 side = st.sidebar.radio("Menú", ("ℹ️ Acerca", "❓ Ayuda"))
