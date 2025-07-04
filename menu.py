@@ -13,6 +13,9 @@ from clases.classGestor import GestorPermiso
 
 st.set_page_config(page_title="UAM‑CodeX", page_icon="📚")
 
+# Mostrar banner principal
+st.image("static/banner_inicio.png", use_column_width=True)
+
 # ─── Sidebar ───────────────────────────────────────────
 side = st.sidebar.radio("Menú", ("ℹ️ Acerca", "❓ Ayuda"))
 
