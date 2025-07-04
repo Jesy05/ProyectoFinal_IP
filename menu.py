@@ -17,8 +17,8 @@ st.set_page_config(page_title="UAM‑CodeX", page_icon="📚")
 # Mostrar banner principal
 ruta_banner = os.path.join("static", "banner_inicio.png")
 if os.path.exists(ruta_banner):
-    st.image(ruta_banner, use_column_width=True)
-else:
+    st.image(ruta_banner, use_container_width=True)
+
     st.warning("No se encontró el archivo del banner.")
 
 # ─── Sidebar ───────────────────────────────────────────
