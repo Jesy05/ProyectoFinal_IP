@@ -24,8 +24,8 @@ class Articulo: #Esta clase va a ser la que ayude a gestionar
         #que no ha sido revisado o cuantas veces ha sido revisado
 
     def aprobar(self): 
-        self.revisiones += 1
-        if self.revisiones >= 2:
+        self.revisiones += 1 #Aumenta en 1 el número de revisiones.
+        if self.revisiones >= 2: #Si el artículo ya ha sido revisado 2 veces o más, cambia su estado a "Aprobado".
             self.estado = "Aprobado"
 
     def rechazar(self):
