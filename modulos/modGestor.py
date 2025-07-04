@@ -1,7 +1,7 @@
 # modulos/modGestor.py
 
 import streamlit as st
-from modulos.modArticulo import articulos_borrador
+from modulos.modPublicador import articulos_borrador
 
 articulos_aprobados = [] # Lista para almacenar artículos aprobados 
 

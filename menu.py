@@ -2,7 +2,7 @@
 # Versión: 1.1 GUI
 
 import streamlit as st
-from modulos.modArticulo import menu_publicador
+from modulos.modPublicador import menu_publicador
 from modulos.modGestor import menu_gestor
 from modulos.modLector import menu_lector 
 

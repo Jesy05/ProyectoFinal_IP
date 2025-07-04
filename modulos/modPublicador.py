@@ -1,4 +1,4 @@
-# modulos/modArticulo.py
+# modulos/modPublicador.py
 
 import streamlit as st
 from clases.classArticulo import Articulo
