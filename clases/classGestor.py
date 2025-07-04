@@ -24,7 +24,5 @@ class GestorPermiso: #Se define una clase llamada GestorPermiso.
             # símbolo especial de la lista "!@#$%^&*()".
             self.clave in GestorPermiso.CLAVES_VALIDAS #Finalmente, verifica que la clave esté dentro de la 
             # lista de CLAVES_VALIDAS.
-
-
         )
 
