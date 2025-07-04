@@ -1,5 +1,4 @@
-# main.py – GUI con expander de login y placeholders
-# Versión: 1.1 GUI
+# main.py –
 
 import streamlit as st
 import os
@@ -71,7 +70,7 @@ with st.expander("🔑 Iniciar sesión (elige tu rol)"):
     if rol == "Gestor":
         clave_gestor = st.text_input("🔐 Clave de Gestor", type="password", key="clave_gestor")
 
-    if st.button("Iniciar sesión"):
+    if st.button("Iniciar Sesión/ Registrarse"):
         usuario = Usuario(usuario_input, contra_input)
         rol_usuario = Rol(rol)
 

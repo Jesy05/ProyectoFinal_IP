@@ -15,3 +15,8 @@ class Rol: #Se define una clase llamada Rol. Es una plantilla para crear objetos
 # Usa self.rol, que es el valor del rol que tiene el objeto.
 # Lo busca dentro de Rol.ROLES_VALIDOS.
 # Devuelve True si está en la lista, o False si no lo está.
+
+usuarios_guardados = {
+    "ana_publicadora": {"contra": "Ana*12345678", "rol": "Publicador"},
+    "luis_lector": {"contra": "Luis*12345678", "rol": "Lector"}
+}
