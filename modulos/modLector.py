@@ -4,7 +4,7 @@ import streamlit as st
 from modulos.modGestor import articulos_aprobados
 
 def menu_lector():
-    st.subheader("📖 Artículos disponibles")
+    st.subheader("📖 Artículos disponibles")# Enseña articulos disponibles para el lector y oculta los que estan en borrador
     if not articulos_aprobados:
         st.info("No hay artículos recientes aún.")
     for i, art in enumerate(articulos_aprobados):
