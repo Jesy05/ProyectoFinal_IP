@@ -35,7 +35,7 @@ def menu_gestor():
 # --- Nueva sección: Eliminar usuarios ---
     st.markdown("---")
     st.subheader("🔒 Administración de usuarios")
-    st.write("Selecciona un usuario para eliminar del sistema.")
+    st.write("Seleccione un usuario para poderlo eliminarlo del sistema.")
 
     nombres_disponibles = [u.nombre for u in usuarios if u.rol != "Gestor"]
     if nombres_disponibles:
