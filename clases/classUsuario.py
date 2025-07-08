@@ -19,7 +19,7 @@ class Usuario:
 
     def validar_contrasena(self) -> bool:
       """12–40 caracteres, al menos un símbolo especial."""
-        return (
+      return (
             isinstance(self.contra, str)
             and 12 <= len(self.contra) <= 40
             and bool(re.search(r"[!@#$%^&*()_+=\-{}\[\]:\";'<>.,?/\\]", self.contra))
