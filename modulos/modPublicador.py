@@ -45,7 +45,10 @@ def editar_articulo(usuario_actual, i):
     st.subheader(f"📝 Editando: {art.titulo}")
 
     # claves únicas por artículo
-    k_t = f"titulo_{i}"
+    # Esto es importante para que Streamlit pueda identificar cada campo de entrada y botón de forma única.
+    # Si no se usan claves únicas, Streamlit podría confundir los campos y botones entre sí, especialmente 
+    # si hay varios artículos en la lista. 
+    k_t = f"titulo_{i}" # Claves únicas para cada campo de entrada y botón.
     k_a = f"autor_{i}"
     k_c = f"contenido_{i}"
     k_guardado = f"guardado_{i}"
