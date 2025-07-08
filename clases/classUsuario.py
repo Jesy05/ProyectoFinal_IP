@@ -14,14 +14,14 @@ class Usuario:
         return (
             isinstance(self.nombre, str)
             and len(self.nombre) <= 50
-            and re.fullmatch(r"[A-Za-z0-9_ ]*", self.nombre) is not None
+            and re.fullmatch(r"[A-Za-z0-9_.@\- ]*", self.nombre) is not None
         )
 
     def validar_contrasena(self) -> bool:
-        """12–20 chars, al menos un símbolo especial."""
+      """12–40 caracteres, al menos un símbolo especial."""
         return (
             isinstance(self.contra, str)
-            and 12 <= len(self.contra) <= 20
+            and 12 <= len(self.contra) <= 40
             and bool(re.search(r"[!@#$%^&*()_+=\-{}\[\]:\";'<>.,?/\\]", self.contra))
          )
 
