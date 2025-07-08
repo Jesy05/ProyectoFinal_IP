@@ -62,7 +62,7 @@ def editar_articulo(usuario_actual, i):
     # Guardar solo si hay cambios
     if st.button("💾 Guardar cambios", key=f"guardar_{i}"):# Botón que guarda los cambios si el usuario modificó algo.
         #El key es clave para que Streamlit entienda que este botón es único para el artículo i.
-        hubo_cambios = (
+        hubo_cambios = ( #Esta línea compara lo que el usuario acaba de escribir en los campos, con lo que ya estaba guardado.
             nuevo_titulo != art.titulo or 
             nuevo_autor != art.autor or
             nuevo_contenido != art.contenido
