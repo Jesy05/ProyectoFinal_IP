@@ -31,3 +31,25 @@ def menu_gestor():
 
     if not hay_borradores:
         st.info("No hay artículos en revisión por el momento.")
+
+# --- Nueva sección: Eliminar usuarios ---
+    st.markdown("---")
+    st.subheader("🔒 Administración de usuarios")
+    st.write("Selecciona un usuario para eliminar del sistema.")
+
+    nombres_disponibles = [u.nombre for u in usuarios if u.rol != "Gestor"]
+    if nombres_disponibles:
+        nombre_a_eliminar = st.selectbox("Usuario a eliminar:", nombres_disponibles)
+
+        confirmar = st.checkbox("Confirmo que deseo eliminar a este usuario permanentemente.")
+        if st.button("🗑️ Eliminar usuario"):
+            if confirmar:
+                for i, u in enumerate(usuarios):
+                    if u.nombre == nombre_a_eliminar:
+                        usuarios.pop(i)
+                        st.success(f"✅ Usuario '{nombre_a_eliminar}' eliminado correctamente.")
+                        st.rerun()
+            else:
+                st.warning("Debes confirmar la eliminación.")
+    else:
+        st.info("No hay usuarios disponibles para eliminar.")
