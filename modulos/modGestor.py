@@ -18,13 +18,13 @@ def menu_gestor():
                     st.write(art.contenido)
 
                     col1, col2 = st.columns(2)
-                    if col1.button("✅ Aprobar", key=f"aprobar_{user.nombre}_{i}"):
+                    if col1.button("✅ Aprobar", key=f"aprobar_{user.nombre}_{i}"):  
                         articulos_aprobados.append(art)
                         user.borradores.pop(i)
                         st.success("Artículo aprobado.")
                         st.rerun()
 
-                    if col2.button("❌ Rechazar", key=f"rechazar_{user.nombre}_{i}"):
+                    if col2.button("❌ Rechazar", key=f"rechazar_{user.nombre}_{i}"): #Boton como uso de filtro para desechar Articulo 
                         user.borradores.pop(i)
                         st.warning("Artículo rechazado.")
                         st.rerun()
