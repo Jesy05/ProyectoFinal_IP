@@ -32,7 +32,7 @@ def menu_gestor():
     if not hay_borradores:
         st.info("No hay artículos en revisión por el momento.")
 
-# --- Nueva sección: Eliminar usuarios ---
+# Sección Eliminación de usuarios
     st.markdown("---")
     st.subheader("🔒 Administración de usuarios")
     st.write("Seleccione un usuario para poderlo eliminarlo del sistema.")
